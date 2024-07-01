@@ -1,0 +1,464 @@
+
+REACT
+------
+- React is an open source web application(available to all)
+- It is developed and maintained by meta/facebook
+
+Features
+--------
+- 1)used for creating UI
+- 2)Library
+- 3)its a single Page application - Index.html
+    -only one page render in the browser
+    -all other pages should have direct or indirect connections with the page that loads in the browser(Index.html)
+- 4)Declarative application
+      -doesnot access real DOM.
+
+  5)VIRTUAL DOM
+    -----------
+- Its a copy of real DOM
+- Created by react 
+
+- 6)Diffing
+-----------
+    - the process of comparing the virtual DOM with the real DOM
+
+- 7)reconciliation
+----------------
+    - the process of updating the real DOM after comparing it with the virtual DOM
+
+- 8)pure function
+---------------
+-output should only depends on arguments(it should not depend on the data from outside)
+- normal function
+ function functionname(arg){
+    statements;
+ }
+
+- react function
+function functionname(){
+    js code
+
+return(){ - output of the function
+    jsx - display
+}
+}
+
+- 9)language used in react : jsx
+browser understanding language : html css javascript 
+
+- 10)transpiling 
+-------------
+- conversion of jsx into browser understanding language
+- babel 
+
+- 11)data sharing 
+--------------
+- unidirectional - data flow is one directional ie: parent to child
+
+- props - its a predefined object for data sharing between parent and child
+
+    parent - key = {value}
+    child - props.key
+
+- 12)Reusability of components
+
+- how to create a react application 
+-----------------------------------
+commands
+
+1)npx create-react-app projectname
+npx - node package executor
+
+to set npm in globally
+npm i -g npm
+
+2)cd projectname
+3)code .
+4)npm start - run the project
+
+files
+------
+1) README.md     - discription of the project
+2) packages.json - npm configuration
+   dependencies  - installed libraries will be in this
+3) package-lock.json - installed libraries - versions
+4) node_modules  - copy of the installed libraries
+5) .gitignore    - files that have to be ignore while push the project to git.
+6) public folder - files that can be accesed througout the application
+    - index.html - only file that run in the browser
+
+
+(- webvital - using to check the performance)
+
+COMPONENT
+---------
+
+- it is the basic unit of user interface
+- component name should start with capital letter
+- with extension as .js or .jsx
+- to place a component in another file  - we use component name tag(self closing tag)
+- inorder to use a component we should export it to another and import it there
+
+
+* we can write js code inside the function of a component before return
+* we can write css code internally or externally
+* we can write html code inside return() - called jsx code
+
+* all tags inside return function should placed inside a single tag or fragment   <> </>
+
+
+
+style - css
+-----------
+
+
+- external 
+	-file with extension as .css
+	-import on those file where this css styles have to applied.
+
+- inline css
+	
+	style={{property:value,}}
+
+- module.css
+  ----------
+-must create src folder
+-with extension as .module.css
+-accessible throughout the project
+-can store in a variable
+-inorder to use this module in another file we need to import the file
+
+
+
+*components in react are of two types
+
+   1) functional components  /  stateless components
+          functional - basic structure
+
+			import React from 'react'
+
+			function Function name() {
+
+			//js code
+
+ 			 return (
+
+			//html code
+ 			   <div>Function name</div>
+			  )
+			}
+
+			export default Function name
+
+
+
+   2) class components  /  statefull components
+          class - basic structure
+
+
+
+			import React, { Component } from 'react'
+
+			export default class classname extends Component {
+			//js code
+  			render() {
+   			 return (
+			//html codes
+      			   <div>Random</div>
+   			  )
+  			 }
+			}
+
+dataSharing
+-----------
+- using props-predefined object
+- key:value - enclosed in curly bracket
+- data sharing between parent and child components(direction - parent to child)
+
+
+object destructuring
+--------------------
+placing the keys inside a curly bracket
+
+Event handling
+--------------
+click event
+
+function with arguments
+click ={()=>{functionname(arg)}}
+
+function without arguments
+click ={functionname}
+
+onchange ={(e) =>functionname(e)}
+
+conditional rendering
+---------------------
+
+1) ternary operator - condition?true:false
+2) truthy operator - condition && true
+
+
+state
+-----
+- by default present class component
+- is an object used to store properties(values) of a react class component
+- if the value in the state changes the whole component render
+
+- where variable store local data that does not effect the component rerender
+
+- setState() - function to change the value of a state
+
+
+
+life cycle of react class component
+-----------------------------------
+
+basic three phase
+-----------------
+1) mounting phase - creation of components
+     - constructor() - to initialise the state
+     - getDerivedStateFromProps - use to modify the state value using props
+				- it returns a object to update the tate or null to indicate no state updation
+     - render() - returns jsx that represents component output
+     - componentDidMount() - last method - network call - api call - side effects
+2) updating phase - updation of components
+     - getDerivedStateFromProps - use to modify the state value using props
+				- it returns a object to update the tate or null to indicate no state updation
+     - shouldcomponentUpdate() - this method is invoked before rendering when a new props or state are being received
+				- it returns true if the component should update else return false
+     - render() - returns jsx that represents component output
+     - getsnapShotBeforeUpdate() - this method is call right before the changes from the virtual dom are to be reflected in the actual dom
+     - componentDidupdate() - Dom update
+3) unmounting phase - deletion of the component
+
+     - componentWillUnmount() - network call will be cancel,clean the dom.
+
+4) ERROR handling phase
+
+    1) getDerivedStateFromError() - this method is called when there is an error during the render
+    2) componentDidCatch() - call after an error been thrown - log
+
+
+HOOKS
+-----
+- HOOKS are functions
+- rules to use HOOKS
+  ------------------
+   - inorder to use a HOOK in functional component , it need to be imported in the functional component at the top of the file.
+   - can call HOOK at the top of the function
+   - HOOKS cannot be called co conditionally
+
+- two type of functions
+     1) predefined HOOKS
+         1) useState() - to provide state to a functional component 
+            -return state,and a function to change the state
+ 
+         syntax
+         ------
+        const [state,function name] = useState(initial value of state)
+
+     2) custom HOOKS
+
+
+Rest operator
+-------------
+to get the remaining all values from an object
+
+
+creating new react project ( vite@ )
+------------------------------------
+
+npm create vite@latest project name
+cd project name
+npm install
+
+code .    open vs code
+
+npm run dev - to run project
+
+
+- in package.json  -  "dev":vite --open",
+regular expression
+------------------
+- used to check the pattern of a given string
+
+Rules for creating regular expression :
+--------------------------------------
+1.starts and ends with forward slash
+2.expression should starts with ^(rise to)
+3.expression should ends with $(dollar)
+4.conditions are placed inside a square bracket
+
+eg:  /^[0-9a]*$/
+
+match() - compare reg expression with string - returns an array of input when the expression matches otherwise null
+
+Routing in React
+----------------
+- setting path for components
+- react-router-dom - library to provide path in react application.
+
+steps
+-----
+- install react -router-dom - command - npm i react-router-dom
+- place the app component/selector inside browserRouter tag
+- provide path for components using route and routes tag
+
+A <Route> is only ever to be used as the child of <Routes>
+
+json - Server
+-------------
+
+- its a light weight and easy-to-use node js tool that stimulates a RestfulAPI using a json file as the data source.
+- with json servers , frontend developers can create mock api without the need to write complex server-side code , or when the backend api isn't ready.
+- it supports common http request like get put post and delete for performing CRUD operation.
+
+how to create json servers
+--------------------------
+1) create a folder and install package.json file - npm init -y
+
+2) install json-server library - npm i json-server
+
+3) update the script key with start command to run the application
+
+4) create .gitignore file - 
+
+5) create a json file to store the data
+
+6) create index.js file - to create server
+
+ - require - its a key used to import libraries in the server side.
+   
+ syntax :
+ const variable = require('name')
+
+Axios
+-----
+- javaScript library for api call
+- based on promise
+- then()
+- catch()
+
+* 
+useEffect Hooks
+---------------
+- The useEffect Hook allows you to perform side effects in your components.
+
+  eg: fetching data , directly updating the DOM , and timers.
+
+- useEffects accepts two arguments.The second argument is optional
+ 
+syntax:
+   useEffect(<function>,<dependency>)
+
+
+dependency
+
+1) no dependency - call the effect in every render
+2) empty array - call the effect in the first render
+3) props,state - call use effect in first render as well as when the value of props or state changes
+
+State lifting
+-------------
+- a method of data sharing between multiple components which doesn't exist as parent and child relation. Here the data sharing happens by lifting the state into the parent component and then passing it down to the component which want to share data.
+
+
+- Intl.DateTimeFormat :
+    The Intl.DateTimeFormat object enables language-sensitive date and time formatting.
+
+Drag and drop mechanism
+-----------------------
+
+1) draggable - placed on the tag which need to be dragged
+2) Droppable - placed on the tag on which the content is dropped
+
+events
+1) onDragStart()
+      e.dataTransfer.setData("key","value")
+2) onDragOver()
+      e.preventDefault()
+3) onDrop()
+      e.dataTransfer.getData("key")
+
+
+
+WORKING AS TEAM IN GIT
+----------------------
+
+Create the repository
+
+Click on settings  -> Collaborators -> add password
+
+Click add people 
+
+add each person
+
+load a person to merge
+ -> pull request -> button
+    choose branch name
+ -> create pull request
+ -> merge the pull request
+ -> git pull "Url" - for already cloned person
+
+
+
+
+* to join in the created team :
+  Create a folder
+  To Clone code -  git clone repositoryUrl
+   git init 
+   git status
+   git branch
+   git branch branchName
+   git checkout branchName  -  
+   git add .
+   git commit -m "message"
+   git push origin branchName
+
+
+prop drilling
+-------------
+
+* prop drilling occurs when a parent component generate its state and passes it down as props to its children components that does not consumes the props - instead they only pass it down     to other components that finally consumes it.
+
+* props which is neither created nor consumes by a component is called alongated props.
+
+coupling
+--------
+
+inter dependency of component is called coupling.
+
+ - when prop drilling increases then coupling also increase
+
+
+* state lifting has its own disadvantages,
+    1) Data loss
+    2) complexity
+
+
+REDUX (it is the third way of data sharing in react [props,statelifting,redux])
+-----
+
+- its a javaScript library for state management 
+- it can be used in all front end developing platform which supports javaScript
+- store - function to create store -> configureStore()
+- action - function to create action -> createAction()
+- reducer - function to create -> createReducer()
+
+      -> store - state is created inside the store , state can be globally accessible, to access state useSelector Hook is used.
+          |
+      -> component
+          |
+      -> Action - Action holds the logic to update the state , useDispatch() Hook is used for Dispatch:calling the Action file , payload is the output of action
+          |
+      -> Reducer - reducer can only update store
+
+- redux toolkit
+  -------------
+
+- in toolkit action and reducer are not considered as separated file,instead they are placed in a single file that called slice.
+- Slice : function to create a slice file is - createSlice()
+- slice : it has both action(logic to update state)and reducer(ability to update state).>it return reducer and action
+
